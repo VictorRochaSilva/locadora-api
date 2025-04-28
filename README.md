@@ -36,7 +36,7 @@ Laravel API (PHP 8.2)
 ## 🚀 Como Rodar Localmente
 
 ### 1. Pré-requisitos
-- Docker
+- Docker Desktop
 
 ### 2. Instalação
 
@@ -59,6 +59,7 @@ composer install
 php artisan migrate
 php artisan key:generate
 php artisan storage:link
+php artisan jwt:secret
 ```
 
 Tudo pronto! 🏋️️
