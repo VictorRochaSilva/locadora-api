@@ -52,7 +52,7 @@ cp .env.example .env
 docker compose up -d
 
 # Acessar o container
-docker exec -ti locadora-api /bin/bash
+docker exec -it locadora_app bash
 
 # Instalar dependências e preparar o ambiente
 composer install
@@ -60,6 +60,7 @@ php artisan migrate
 php artisan key:generate
 php artisan storage:link
 php artisan jwt:secret
+php artisan queue:work
 ```
 
 Tudo pronto! 🏋️️
