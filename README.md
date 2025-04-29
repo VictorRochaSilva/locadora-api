@@ -103,9 +103,9 @@ O serviço estará disponível em:
 
 | Método | Endpoint  | Descrição | Middleware |
 |:------:|:---------:|:---------|:----------:|
-| POST | `/register` | Registrar novo usuário | - |
-| POST | `/login` | Realizar login e obter JWT Token | - |
-| POST | `/logout` | Realizar logout | auth:api |
+| POST | `/api/register` | Registrar novo usuário | - |
+| POST | `/api/login` | Realizar login e obter JWT Token | - |
+| POST | `/api/logout` | Realizar logout | auth:api |
 
 ---
 
@@ -113,12 +113,12 @@ O serviço estará disponível em:
 
 | Método | Endpoint  | Descrição | Middleware |
 |:------:|:---------:|:---------|:----------:|
-| GET | `/vehicles` | Listar todos os veículos | auth:api |
-| POST | `/vehicles` | Cadastrar novo veículo | auth:api |
-| GET | `/vehicles/{vehicle}` | Visualizar detalhes de um veículo | auth:api |
-| PUT | `/vehicles/{vehicle}` | Atualizar informações de um veículo | auth:api |
-| DELETE | `/vehicles/{vehicle}` | Deletar um veículo | auth:api |
-| GET | `/vehicles/search?query=TERMO` | Buscar veículos via Elasticsearch | auth:api |
+| GET | `/api/vehicles` | Listar todos os veículos | auth:api |
+| POST | `/api/vehicles` | Cadastrar novo veículo | auth:api |
+| GET | `/api/vehicles/{vehicle}` | Visualizar detalhes de um veículo | auth:api |
+| PUT | `/api/vehicles/{vehicle}` | Atualizar informações de um veículo | auth:api |
+| DELETE | `/api/vehicles/{vehicle}` | Deletar um veículo | auth:api |
+| GET | `/api/vehicles/search?query=TERMO` | Buscar veículos via Elasticsearch | auth:api |
 
 ---
 
@@ -126,11 +126,11 @@ O serviço estará disponível em:
 
 | Método | Endpoint  | Descrição | Middleware |
 |:------:|:---------:|:---------|:----------:|
-| GET | `/customers` | Listar todos os clientes | auth:api |
-| POST | `/customers` | Cadastrar novo cliente | auth:api |
-| GET | `/customers/{customer}` | Visualizar detalhes de um cliente | auth:api |
-| PUT | `/customers/{customer}` | Atualizar informações de um cliente | auth:api |
-| DELETE | `/customers/{customer}` | Deletar um cliente | auth:api |
+| GET | `/api/customers` | Listar todos os clientes | auth:api |
+| POST | `/api/customers` | Cadastrar novo cliente | auth:api |
+| GET | `/api/customers/{customer}` | Visualizar detalhes de um cliente | auth:api |
+| PUT | `/api/customers/{customer}` | Atualizar informações de um cliente | auth:api |
+| DELETE | `/api/customers/{customer}` | Deletar um cliente | auth:api |
 
 ---
 
@@ -138,13 +138,13 @@ O serviço estará disponível em:
 
 | Método | Endpoint  | Descrição | Middleware |
 |:------:|:---------:|:---------|:----------:|
-| GET | `/rentals` | Listar todos os aluguéis | auth:api |
-| POST | `/rentals` | Criar um novo aluguel | auth:api |
-| GET | `/rentals/{rental}` | Visualizar detalhes de um aluguel | auth:api |
-| PUT | `/rentals/{rental}` | Atualizar informações de um aluguel | auth:api |
-| DELETE | `/rentals/{rental}` | Deletar um aluguel | auth:api |
-| POST | `/rentals/{rental}/start` | Iniciar um aluguel | auth:api |
-| POST | `/rentals/{rental}/end` | Finalizar um aluguel | auth:api |
+| GET | `/api/rentals` | Listar todos os aluguéis | auth:api |
+| POST | `/api/rentals` | Criar um novo aluguel | auth:api |
+| GET | `/api/rentals/{rental}` | Visualizar detalhes de um aluguel | auth:api |
+| PUT | `/api/rentals/{rental}` | Atualizar informações de um aluguel | auth:api |
+| DELETE | `/api/rentals/{rental}` | Deletar um aluguel | auth:api |
+| POST | `/api/rentals/{rental}/start` | Iniciar um aluguel | auth:api |
+| POST | `/api/rentals/{rental}/end` | Finalizar um aluguel | auth:api |
 
 ---
 
@@ -170,5 +170,5 @@ O serviço estará disponível em:
 - Laravel 12 (Backend API)
 - Elasticsearch 8 (Search Engine)
 - JWT para autenticação segura
-- Redis + Queues para processamento assíncrono
+- Python (Geração de Relatórios)
 - SOLID Principles, Clean Code e Clean Architecture
