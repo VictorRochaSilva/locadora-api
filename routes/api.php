@@ -15,8 +15,6 @@ use App\Http\Controllers\ReportController;
  */
 Route::post('/register', [AuthController::class, 'register']);  // Rota para registrar um novo usuário
 Route::post('/login', [AuthController::class, 'login']);        // Rota para login de usuário
-// routes/web.php
-Route::get('/reports/revenue', [ReportController::class, 'revenue']);
 
 /**
  * Rotas protegidas por autenticação via token JWT.
@@ -56,4 +54,10 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/rentals/{rental}/start', [RentalController::class, 'start']);  // Inicia o aluguel
     Route::post('/rentals/{rental}/end', [RentalController::class, 'end']);      // Finaliza o aluguel
 
+
+    /**
+     * Rota para gerar relatórios de faturamento.
+     * 
+     */
+    Route::get('/reports/revenue', [ReportController::class, 'revenue']);
 });
