@@ -114,11 +114,11 @@ O serviço estará disponível em:
 | Método | Endpoint  | Descrição | Middleware |
 |:------:|:---------:|:---------|:----------:|
 | GET | `/api/vehicles` | Listar todos os veículos | auth:api |
-| POST | `/api/vehicles` | Cadastrar novo veículo | auth:api |
 | GET | `/api/vehicles/{vehicle}` | Visualizar detalhes de um veículo | auth:api |
+| GET | `/api/vehicles/search?query=TERMO` | Buscar veículos via Elasticsearch | auth:api |
+| POST | `/api/vehicles` | Cadastrar novo veículo | auth:api |
 | PUT | `/api/vehicles/{vehicle}` | Atualizar informações de um veículo | auth:api |
 | DELETE | `/api/vehicles/{vehicle}` | Deletar um veículo | auth:api |
-| GET | `/api/vehicles/search?query=TERMO` | Buscar veículos via Elasticsearch | auth:api |
 
 ---
 
@@ -127,8 +127,8 @@ O serviço estará disponível em:
 | Método | Endpoint  | Descrição | Middleware |
 |:------:|:---------:|:---------|:----------:|
 | GET | `/api/customers` | Listar todos os clientes | auth:api |
-| POST | `/api/customers` | Cadastrar novo cliente | auth:api |
 | GET | `/api/customers/{customer}` | Visualizar detalhes de um cliente | auth:api |
+| POST | `/api/customers` | Cadastrar novo cliente | auth:api |
 | PUT | `/api/customers/{customer}` | Atualizar informações de um cliente | auth:api |
 | DELETE | `/api/customers/{customer}` | Deletar um cliente | auth:api |
 
@@ -139,10 +139,8 @@ O serviço estará disponível em:
 | Método | Endpoint  | Descrição | Middleware |
 |:------:|:---------:|:---------|:----------:|
 | GET | `/api/rentals` | Listar todos os aluguéis | auth:api |
-| POST | `/api/rentals` | Criar um novo aluguel | auth:api |
 | GET | `/api/rentals/{rental}` | Visualizar detalhes de um aluguel | auth:api |
-| PUT | `/api/rentals/{rental}` | Atualizar informações de um aluguel | auth:api |
-| DELETE | `/api/rentals/{rental}` | Deletar um aluguel | auth:api |
+| POST | `/api/rentals` | Criar um novo aluguel | auth:api |
 | POST | `/api/rentals/{rental}/start` | Iniciar um aluguel | auth:api |
 | POST | `/api/rentals/{rental}/end` | Finalizar um aluguel | auth:api |
 
