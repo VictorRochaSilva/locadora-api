@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RentalController;
+use App\Http\Controllers\ReportController;
 
 /**
  * Rotas de autenticação (registro e login).
@@ -14,6 +15,8 @@ use App\Http\Controllers\RentalController;
  */
 Route::post('/register', [AuthController::class, 'register']);  // Rota para registrar um novo usuário
 Route::post('/login', [AuthController::class, 'login']);        // Rota para login de usuário
+// routes/web.php
+Route::get('/reports/revenue', [ReportController::class, 'revenue']);
 
 /**
  * Rotas protegidas por autenticação via token JWT.
@@ -52,4 +55,5 @@ Route::middleware('auth:api')->group(function () {
      */
     Route::post('/rentals/{rental}/start', [RentalController::class, 'start']);  // Inicia o aluguel
     Route::post('/rentals/{rental}/end', [RentalController::class, 'end']);      // Finaliza o aluguel
+
 });

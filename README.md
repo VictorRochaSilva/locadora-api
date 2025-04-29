@@ -1,7 +1,7 @@
 # 🚗 Locadora de Veículos API
 
-**Desenvolvedor:** Victor Rocha
-**Stack:** Laravel 12 | PHP 8.2 | Elasticsearch 8 | JWT (Tymon) | Redis  
+**Desenvolvedor:** Victor Rocha  
+**Stack:** Laravel 12 | PHP 8.2 | Elasticsearch 8 | JWT (Tymon) | Python (Relatórios)
 **Status:** Finalizado ✅
 
 ---
@@ -15,7 +15,7 @@ Principais destaques:
 - ✨ Arquitetura SOLID, Clean Code e Clean Architecture
 - ⚡ Busca ultrarrápida de veículos com Elasticsearch
 - 🔐 Autenticação segura via JWT (Bearer Token)
-- 🛠️ Processamento assíncrono utilizando filas (Redis)
+- 📊 Geração de relatórios financeiros via serviço Python dedicado
 
 Pensado para ambientes de produção que exigem qualidade, resiliência e escalabilidade.
 
@@ -28,6 +28,7 @@ Laravel API (PHP 8.2)
 ├── Autenticação (JWT)
 ├── CRUD de Veículos, Clientes e Aluguéis
 ├── Serviço de Busca via Elasticsearch
+├── Integração com Serviço Python de Relatórios
 └── Processamento Assíncrono (Indexação em Filas)
 ```
 
@@ -37,8 +38,11 @@ Laravel API (PHP 8.2)
 
 ### 1. Pré-requisitos
 - Docker Desktop
+- Python 3.13
 
-### 2. Instalação
+---
+
+### 2. Instalação do Projeto Laravel
 
 ```bash
 # Clonar o repositório
@@ -48,13 +52,13 @@ cd locadora-api
 # Copiar o arquivo de ambiente
 cp .env.example .env
 
-# Subir containers
+# Subir containers Docker
 docker compose up -d
 
-# Acessar o container
+# Acessar o container PHP
 docker exec -it locadora_app bash
 
-# Instalar dependências e preparar o ambiente
+# Instalar dependências e configurar o ambiente
 composer install
 php artisan migrate
 php artisan key:generate
@@ -63,7 +67,33 @@ php artisan jwt:secret
 php artisan queue:work
 ```
 
-Tudo pronto! 🏋️️
+---
+
+### 3. Como Rodar o Serviço Python de Relatórios
+
+```bash
+# Entrar na pasta do serviço (separada ou dentro do projeto)
+cd reports-service
+
+# Criar ambiente virtual
+python -m venv venv
+
+# Ativar o ambiente virtual
+# Linux/macOS:
+source venv/bin/activate
+# Windows:
+cd venv\Scripts\activate
+
+# Instalar dependências
+pip install -r requirements.txt
+
+# Rodar o servidor
+uvicorn main:app --host 0.0.0.0 --port 8001 --reload
+```
+
+**Observação:**  
+O serviço estará disponível em:  
+`http://localhost:8001/reports/revenue?start=YYYY-MM-DD&end=YYYY-MM-DD`
 
 ---
 
@@ -77,6 +107,8 @@ Tudo pronto! 🏋️️
 | POST | `/login` | Realizar login e obter JWT Token | - |
 | POST | `/logout` | Realizar logout | auth:api |
 
+---
+
 ### 🚗 Veículos
 
 | Método | Endpoint  | Descrição | Middleware |
@@ -88,6 +120,8 @@ Tudo pronto! 🏋️️
 | DELETE | `/vehicles/{vehicle}` | Deletar um veículo | auth:api |
 | GET | `/vehicles/search?query=TERMO` | Buscar veículos via Elasticsearch | auth:api |
 
+---
+
 ### 👤 Clientes
 
 | Método | Endpoint  | Descrição | Middleware |
@@ -97,6 +131,8 @@ Tudo pronto! 🏋️️
 | GET | `/customers/{customer}` | Visualizar detalhes de um cliente | auth:api |
 | PUT | `/customers/{customer}` | Atualizar informações de um cliente | auth:api |
 | DELETE | `/customers/{customer}` | Deletar um cliente | auth:api |
+
+---
 
 ### 📄 Aluguéis
 
@@ -112,11 +148,20 @@ Tudo pronto! 🏋️️
 
 ---
 
+### 📊 Relatórios
+
+| Método | Endpoint  | Descrição | Middleware |
+|:------:|:---------:|:---------|:----------:|
+| GET | `/api/reports/revenue?start=YYYY-MM-DD&end=YYYY-MM-DD` | Consultar relatório de faturamento no período informado | auth:api |
+
+---
+
 ## 📌 Observações
 
 - Todas as rotas (exceto `/login` e `/register`) exigem autenticação via JWT Bearer Token.
 - A busca de veículos é realizada utilizando Elasticsearch para resultados rápidos e eficientes.
 - O fluxo de aluguéis inclui iniciar e finalizar explicitamente, garantindo o controle total sobre os status.
+- O serviço de relatórios é integrado e se comunica via HTTP entre Laravel e Python.
 
 ---
 
@@ -127,5 +172,3 @@ Tudo pronto! 🏋️️
 - JWT para autenticação segura
 - Redis + Queues para processamento assíncrono
 - SOLID Principles, Clean Code e Clean Architecture
-
----
