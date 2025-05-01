@@ -73,7 +73,7 @@ php artisan queue:work
 
 ```bash
 # Entrar na pasta do serviço (separada ou dentro do projeto)
-cd reports-service
+cd rental-reports
 
 # Criar ambiente virtual
 python -m venv venv
